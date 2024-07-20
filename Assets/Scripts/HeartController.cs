@@ -5,14 +5,19 @@ using UnityEngine;
 public class HeartController : MonoBehaviour
 {
     public GameObject heartProjectilePrefab;
+    private Rigidbody2D rb;
+    private float timer;
 
     void Start()
     {
-        
+        rb = transform.parent.GetComponent<Rigidbody2D>();
+        timer = 2.0f;
     }
 
     void Update()
     {
+        timer += Time.deltaTime;
+
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
 
@@ -23,9 +28,9 @@ public class HeartController : MonoBehaviour
         else
         {
             Vector3 direction = mouseWorldPos - transform.parent.position;
-            transform.position = direction.normalized * 0.8f;
+            transform.localPosition = direction.normalized * 0.8f;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && timer > 2.0f)
             {
                 Fire();
             }
@@ -37,5 +42,7 @@ public class HeartController : MonoBehaviour
         Vector3 travelDirection = transform.position - transform.parent.position;
         heartProjectilePrefab.GetComponent<TravelingHeart>().travelDirection = travelDirection.normalized;
         Instantiate(heartProjectilePrefab, transform.position, Quaternion.identity);
+        timer = 0.0f;
+        rb.velocity = travelDirection * -2.5f;
     }
 }
