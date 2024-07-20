@@ -18,6 +18,11 @@ public class TravelingHeart : MonoBehaviour
     {
         transform.position += travelDirection * speed;
 
+        if (tag != "HeartProjectile")
+        {
+            transform.Rotate(0, 0, 0.05f);
+        }
+
         if (Vector3.Distance(transform.position, player.transform.position) > 20.0f)
         {
             Destroy(this.gameObject);
