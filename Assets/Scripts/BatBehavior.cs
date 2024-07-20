@@ -46,6 +46,8 @@ public class BatBehavior : MonoBehaviour
             Destroy(collision.gameObject);
             anim.SetBool("isGood", true);
             GetComponent<BoxCollider2D>().enabled = false;
+            Camera.main.GetComponent<BatAndMouseTracking>().ChangeBatCounter();
+            Camera.main.GetComponent<BatAndMouseTracking>().ActivateText();
         }
     }
 }

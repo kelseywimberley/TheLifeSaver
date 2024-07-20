@@ -57,6 +57,8 @@ public class MouseBehavior : MonoBehaviour
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().sprite = goodSprite;
             GetComponent<BoxCollider2D>().enabled = false;
+            Camera.main.GetComponent<BatAndMouseTracking>().ChangeMouseCounter();
+            Camera.main.GetComponent<BatAndMouseTracking>().ActivateText();
         }
     }
 }

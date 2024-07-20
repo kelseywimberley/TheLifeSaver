@@ -23,7 +23,7 @@ public class TravelingHeart : MonoBehaviour
             transform.Rotate(0, 0, 0.05f);
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) > 20.0f)
+        if (Vector3.Distance(transform.position, player.transform.position) > 10.0f)
         {
             Destroy(this.gameObject);
         }
