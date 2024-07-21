@@ -68,6 +68,7 @@ public class MouseBehavior : MonoBehaviour
         if (collision.tag == "HeartProjectile")
         {
             good = true;
+            GetComponent<AudioSource>().Play();
             transform.eulerAngles = new Vector3(0, 0, 0);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().sprite = goodSprite;

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class BatAndMouseTracking : MonoBehaviour
 {
     public GameObject star;
+    public TextMeshProUGUI titleText;
+
     public GameObject cornerUI;
     public TextMeshProUGUI batText;
     public TextMeshProUGUI mouseText;
@@ -17,10 +19,11 @@ public class BatAndMouseTracking : MonoBehaviour
     {
         batCount = 5;
         mouseCount = 5;
-
+        
         if (PlayerPrefs.GetInt("Star") == 1)
         {
             star.SetActive(true);
+            titleText.text = "The\nTRUE";
         }
     }
 

@@ -20,8 +20,9 @@ public class PickupHeart : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            GetComponent<AudioSource>().Play();
             heart.SetActive(true);
-            gameObject.SetActive(false);
+            transform.position = new Vector3(100, 0, 0);
         }
     }
 }

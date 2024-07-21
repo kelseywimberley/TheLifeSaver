@@ -135,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity += new Vector2(0, jumpSpeed);
                 anim.SetBool("isInAir", true);
                 yVel = rb.velocity.y;
+                GetComponent<AudioSource>().Play();
             }
         }
         else
@@ -195,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
             hurt = true;
             health--;
             timer = 0.0f;
+            Camera.main.GetComponent<AudioSource>().Play();
 
             if (health == 2)
             {
@@ -218,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
             hurt = true;
             health--;
             timer = 0.0f;
+            Camera.main.GetComponent<AudioSource>().Play();
 
             if (health == 2)
             {

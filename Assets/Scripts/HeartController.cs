@@ -44,5 +44,6 @@ public class HeartController : MonoBehaviour
         Instantiate(heartProjectilePrefab, transform.position, Quaternion.identity);
         timer = 0.0f;
         rb.velocity = travelDirection.normalized * -7.5f;
+        GetComponent<AudioSource>().Play();
     }
 }

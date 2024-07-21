@@ -42,7 +42,8 @@ public class BatBehavior : MonoBehaviour
                 {
                     Vector3 travelDirection = playerTransform.position - transform.position;
                     attackPrefab.GetComponent<TravelingHeart>().travelDirection = travelDirection.normalized;
-                    Instantiate(attackPrefab, transform.position, Quaternion.identity);
+                    GameObject attack = Instantiate(attackPrefab, transform.position, Quaternion.identity);
+                    attack.GetComponent<AudioSource>().Play();
                     timer = 0.0f;
                 }
             }
@@ -54,6 +55,7 @@ public class BatBehavior : MonoBehaviour
         if (collision.tag == "HeartProjectile")
         {
             good = true;
+            GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
             anim.SetBool("isGood", true);
             GetComponent<BoxCollider2D>().enabled = false;
