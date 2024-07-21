@@ -46,12 +46,15 @@ public class BatAndMouseTracking : MonoBehaviour
         mouseText.text = "X" + mouseCount;
     }
 
-    public void CheckWinCondition()
+    public bool CheckWinCondition()
     {
         if (mouseCount == 0 && batCount == 0)
         {
             PlayerPrefs.SetInt("Star", 1);
+            return true;
         }
+
+        return false;
     }
 
     public void PlayGame()
