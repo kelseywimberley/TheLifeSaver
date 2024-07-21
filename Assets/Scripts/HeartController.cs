@@ -43,6 +43,6 @@ public class HeartController : MonoBehaviour
         heartProjectilePrefab.GetComponent<TravelingHeart>().travelDirection = travelDirection.normalized;
         Instantiate(heartProjectilePrefab, transform.position, Quaternion.identity);
         timer = 0.0f;
-        rb.velocity = travelDirection.normalized * -6.0f;
+        rb.velocity = travelDirection.normalized * -7.5f;
     }
 }

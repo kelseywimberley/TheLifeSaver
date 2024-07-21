@@ -10,12 +10,14 @@ public class MouseBehavior : MonoBehaviour
     public Vector3 rightPos;
     private bool goingLeft;
     private float speed;
+    private Transform playerTransform;
 
     void Start()
     {
         good = false;
         goingLeft = true;
         speed = 2.0f;
+        playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     void Update()
@@ -47,6 +49,18 @@ public class MouseBehavior : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            // Face Player
+            if (playerTransform.position.x > transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,6 +68,7 @@ public class MouseBehavior : MonoBehaviour
         if (collision.tag == "HeartProjectile")
         {
             good = true;
+            transform.eulerAngles = new Vector3(0, 0, 0);
             Destroy(collision.gameObject);
             GetComponent<SpriteRenderer>().sprite = goodSprite;
             GetComponent<BoxCollider2D>().enabled = false;

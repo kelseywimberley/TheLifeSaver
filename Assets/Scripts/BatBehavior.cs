@@ -15,14 +15,25 @@ public class BatBehavior : MonoBehaviour
     {
         good = false;
         anim = GetComponent<Animator>();
-        timer = 0;
+        timer = 1.5f;
         playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     void Update()
     {
+        // Face Player
+        if (playerTransform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
         if (!good)
         {
+            // Attack
             if (Vector3.Distance(playerTransform.position, transform.position) < 5.0f)
             {
                 timer += Time.deltaTime;

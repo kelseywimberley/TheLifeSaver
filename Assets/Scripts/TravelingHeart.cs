@@ -10,13 +10,13 @@ public class TravelingHeart : MonoBehaviour
 
     void Start()
     {
-        speed = 0.005f;
+        speed = 2.5f;
         player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-        transform.position += travelDirection * speed;
+        transform.position += travelDirection * speed * Time.deltaTime;
 
         if (tag != "HeartProjectile")
         {
